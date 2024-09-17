@@ -1,45 +1,29 @@
-import { useAccount, useConnect, useDisconnect } from 'wagmi'
+import{Routes, BrowserRouter as Router, Route} from 'react-router-dom'
+import CreatePost from './pages/CreatePost'
+import PostDetail from './pages/PostDetail'
+import Register from './pages/Register'
+import Profile from './pages/Profile'
+import Home from './pages/Home'
+import Navbar from './components/Navbar'
 
 function App() {
-  const account = useAccount()
-  const { connectors, connect, status, error } = useConnect()
-  const { disconnect } = useDisconnect()
 
   return (
-    <>
-      <div>
-        <h2>Account</h2>
-
-        <div>
-          status: {account.status}
-          <br />
-          addresses: {JSON.stringify(account.addresses)}
-          <br />
-          chainId: {account.chainId}
-        </div>
-
-        {account.status === 'connected' && (
-          <button type="button" onClick={() => disconnect()}>
-            Disconnect
-          </button>
-        )}
-      </div>
 
       <div>
-        <h2>Connect</h2>
-        {connectors.map((connector) => (
-          <button
-            key={connector.uid}
-            onClick={() => connect({ connector })}
-            type="button"
-          >
-            {connector.name}
-          </button>
-        ))}
-        <div>{status}</div>
-        <div>{error?.message}</div>
+        <Router>
+          <Navbar/>
+          <Routes>      
+            <Route path='/' element={<Home/>}/>
+            <Route path='/create' element={<CreatePost/>}/>
+            <Route path='/post' element={<PostDetail/>}/>
+            <Route path='/register' element={<Register/>}/>
+            <Route path='/profile' element={<Profile/>}/>
+    
+          </Routes>
+        </Router>
       </div>
-    </>
+
   )
 }
 
