@@ -1,11 +1,9 @@
-import React from 'react'
+/** @format */
+
+import React from "react";
 
 const CreatePost = () => {
-  return (
-    <div>
-      Create Post
-    </div>
-  )
-}
+  return <div className="pt-14 min-h-screen">createPost</div>;
+};
 
-export default CreatePost
+export default CreatePost;

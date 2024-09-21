@@ -1,7 +1,9 @@
-import React from 'react'
+/** @format */
 
-const PostDetail = () => {
-  return <div>PostDetail</div>;
-}
+import React from "react";
 
-export default PostDetail
+const PostDetails = () => {
+  return <div className="pt-14 min-h-screen">postDetails</div>;
+};
+
+export default PostDetails;

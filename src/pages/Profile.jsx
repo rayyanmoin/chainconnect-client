@@ -1,11 +1,9 @@
-import React from 'react'
+/** @format */
+
+import React from "react";
 
 const Profile = () => {
-  return (
-    <div>
-      Profile
-    </div>
-  )
-}
+  return <div className="pt-14 min-h-screen">Profile</div>;
+};
 
-export default Profile
+export default Profile;

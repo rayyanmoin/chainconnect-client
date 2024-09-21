@@ -1,11 +1,27 @@
-import React from 'react'
+/** @format */
+
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { subgraphURL } from "../utils/common";
+import { getAllPlatformPostsQuery } from "@/utils/subgrapgh";
 
 const Home = () => {
-  return (
-    <div>
-      Home
-    </div>
-  )
-}
+  const [post, setPost] = useState([]);
 
-export default Home
+  useEffect(() => {
+    const getPosts = async () => {
+      try {
+        const postAPi = await axios.post(subgraphURL, getAllPlatformPostsQuery());
+        setPost(postAPi.data.data.posts);
+        return postAPi.data.data.posts;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getPosts();
+  },[]);
+
+  return <div className="pt-14 min-h-screen">HOME</div>;
+};
+
+export default Home;
